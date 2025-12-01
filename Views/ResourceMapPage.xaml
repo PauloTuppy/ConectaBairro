@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="ConectaBairro.Views.ResourceMapPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="using:ConectaBairro.ViewModels"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        
+        <!-- HEADER -->
+        <Border Grid.Row="0" Padding="20" CornerRadius="0,0,20,20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#4CAF50" Offset="0.0"/>
+                    <GradientStop Color="#2196F3" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel Spacing="10">
+                <TextBlock Text="Recursos do Seu Bairro" 
+                           Foreground="White" 
+                           FontSize="20" 
+                           FontWeight="Bold"/>
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                    <TextBox Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Digite CEP ou nome" Background="White" CornerRadius="8"/>
+                    <Button Content="Buscar" Command="{Binding SearchLocationCommand}" Background="White" Foreground="#4CAF50" CornerRadius="8"/>
+                </Grid>
+                <TextBlock Text="{Binding CurrentLocation}" Foreground="White" Opacity="0.8" FontSize="12"/>
+            </StackPanel>
+        </Border>
+
+        <!-- FILTERS -->
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,10">
+            <StackPanel Orientation="Horizontal" Spacing="10" Padding="15,0">
+                <Button Content="Todas" Command="{Binding FilterCommand}" CommandParameter="Todas" CornerRadius="15" Background="#4CAF50" Foreground="White" Padding="12,6"/>
+                <Button Content="🏥 Saúde" Command="{Binding FilterCommand}" CommandParameter="Saúde" CornerRadius="15" Background="#E0E0E0" Padding="12,6"/>
+                <Button Content="📚 Educação" Command="{Binding FilterCommand}" CommandParameter="Educação" CornerRadius="15" Background="#E0E0E0" Padding="12,6"/>
+                <Button Content="💼 Programas" Command="{Binding FilterCommand}" CommandParameter="Programas" CornerRadius="15" Background="#E0E0E0" Padding="12,6"/>
+                <Button Content="🤝 Economia" Command="{Binding FilterCommand}" CommandParameter="Economia" CornerRadius="15" Background="#E0E0E0" Padding="12,6"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- MAP PLACEHOLDER -->
+        <Border Grid.Row="2" Margin="15,0,15,15" CornerRadius="12" Background="#F0F0F0" BorderBrush="#E0E0E0" BorderThickness="1">
+            <Grid>
+                <TextBlock Text="🗺️ Mapa Interativo" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray"/>
+                <!-- Simulated Pins -->
+                <Canvas>
+                    <Border Canvas.Left="50" Canvas.Top="50" Width="20" Height="20" CornerRadius="10" Background="#4CAF50" ToolTipService.ToolTip="Programa Social"/>
+                    <Border Canvas.Left="150" Canvas.Top="100" Width="20" Height="20" CornerRadius="10" Background="#2196F3" ToolTipService.ToolTip="Saúde"/>
+                    <Border Canvas.Left="200" Canvas.Top="40" Width="20" Height="20" CornerRadius="10" Background="Orange" ToolTipService.ToolTip="Educação"/>
+                </Canvas>
+            </Grid>
+        </Border>
+
+        <!-- LIST -->
+        <ListView Grid.Row="3" ItemsSource="{Binding FilteredResources}" MaxHeight="250" Margin="15,0,15,15">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="White" CornerRadius="8" Padding="10" Margin="0,5" BorderBrush="#E0E0E0" BorderThickness="1">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <TextBlock Grid.Column="0" Text="{Binding Icon}" FontSize="24" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Type}" FontSize="12" Opacity="0.6"/>
+                                <TextBlock Text="{Binding Address}" FontSize="12" Opacity="0.6"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Foreground="#4CAF50">
+                                        <Run Text="{Binding Distance}"/>
+                                        <Run Text=" km"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Hours}" FontSize="10" Opacity="0.6" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

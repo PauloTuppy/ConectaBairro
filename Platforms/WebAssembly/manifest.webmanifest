@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "ConectaBairro",
+  "display": "standalone",
+  "name": "ConectaBairro",
+  "short_name": "ConectaBairro",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}

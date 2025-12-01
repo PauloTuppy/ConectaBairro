@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="ConectaBairro.Views.AnimationsTestPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <StackPanel Padding="20" Spacing="16">
+            
+            <!-- Header -->
+            <TextBlock Text="🎨 Teste de Animações" 
+                       FontSize="28" 
+                       FontWeight="Bold"
+                       Foreground="{StaticResource PrimaryColorBrush}"/>
+
+            <!-- FadeIn/FadeOut -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="✨ FadeIn/FadeOut" FontSize="18" FontWeight="SemiBold"/>
+                <Border x:Name="FadeBox" 
+                        Background="{StaticResource PrimaryColorBrush}" 
+                        Width="200" Height="100" 
+                        CornerRadius="8">
+                    <TextBlock Text="Fade Me!" 
+                               Foreground="White" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button Content="Fade In" Click="FadeIn_Click"/>
+                    <Button Content="Fade Out" Click="FadeOut_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Rotate -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="🔄 Rotação (Spinner)" FontSize="18" FontWeight="SemiBold"/>
+                <Border x:Name="RotateBox" 
+                        Background="{StaticResource SecondaryColorBrush}" 
+                        Width="100" Height="100" 
+                        CornerRadius="50">
+                    <TextBlock Text="🔄" 
+                               FontSize="40" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                </Border>
+                <Button Content="Girar" Click="Rotate_Click"/>
+            </StackPanel>
+
+            <!-- Scale -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="📈 Scale (Zoom)" FontSize="18" FontWeight="SemiBold"/>
+                <Border x:Name="ScaleBox" 
+                        Background="{StaticResource AccentColorBrush}" 
+                        Width="150" Height="80" 
+                        CornerRadius="8">
+                    <TextBlock Text="Zoom!" 
+                               Foreground="White" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button Content="Aumentar" Click="ScaleUp_Click"/>
+                    <Button Content="Diminuir" Click="ScaleDown_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Bounce -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="💫 Bounce (Pula)" FontSize="18" FontWeight="SemiBold"/>
+                <Border x:Name="BounceBox" 
+                        Background="#9C27B0" 
+                        Width="120" Height="120" 
+                        CornerRadius="60">
+                    <TextBlock Text="🏀" 
+                               FontSize="50" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                </Border>
+                <Button Content="Pular" Click="Bounce_Click"/>
+            </StackPanel>
+
+            <!-- Pulse -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="💥 Pulse (Pulsação)" FontSize="18" FontWeight="SemiBold"/>
+                <Border x:Name="PulseBox" 
+                        Background="#E91E63" 
+                        Width="140" Height="140" 
+                        CornerRadius="70">
+                    <TextBlock Text="💓" 
+                               FontSize="60" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                </Border>
+                <Button Content="Pulsar" Click="Pulse_Click"/>
+            </StackPanel>
+
+            <!-- Slide -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="↔️ Slide (Desliza)" FontSize="18" FontWeight="SemiBold"/>
+                <Border x:Name="SlideBox" 
+                        Background="#00BCD4" 
+                        Width="180" Height="90" 
+                        CornerRadius="8">
+                    <TextBlock Text="Deslize →" 
+                               Foreground="White" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button Content="Deslizar Direita" Click="SlideRight_Click"/>
+                    <Button Content="Voltar" Click="SlideLeft_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Badge Unlock -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="🏆 Badge Unlock (Girando)" FontSize="18" FontWeight="SemiBold"/>
+                <Border x:Name="BadgeBox" 
+                        Background="#FFD700" 
+                        Width="100" Height="100" 
+                        CornerRadius="50">
+                    <TextBlock Text="🏆" 
+                               FontSize="50" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                </Border>
+                <Button Content="Desbloquear Badge" Click="BadgeUnlock_Click"/>
+            </StackPanel>
+
+            <!-- Flip -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="🔃 Flip (Virar)" FontSize="18" FontWeight="SemiBold"/>
+                <Border x:Name="FlipBox" 
+                        Background="#4CAF50" 
+                        Width="150" Height="100" 
+                        CornerRadius="8">
+                    <TextBlock Text="🃏" 
+                               FontSize="50" 
+                               Foreground="White"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                </Border>
+                <Button Content="Virar" Click="Flip_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

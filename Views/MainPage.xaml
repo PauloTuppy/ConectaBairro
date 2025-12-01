@@ -1,0 +1,150 @@
+<Page x:Class="ConectaBairro.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:models="using:ConectaBairro.Models"
+      mc:Ignorable="d"
+      Background="{StaticResource LightGrayColorBrush}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER COM GRADIENTE -->
+        <Border Grid.Row="0" Padding="24,32" CornerRadius="0,0,24,24" Background="{StaticResource HeaderGradientBrush}">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Bem-vindo de volta! 👋"
+                           Foreground="{StaticResource WhiteColorBrush}"
+                           FontSize="28"
+                           FontWeight="Bold"/>
+                <TextBlock Text="Encontre sua oportunidade de transformação"
+                           Foreground="{StaticResource WhiteColorBrush}"
+                           Opacity="0.9"
+                           FontSize="16"/>
+            </StackPanel>
+        </Border>
+
+        <!-- MAIN CONTENT -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Spacing="24" Padding="24">
+
+                <!-- STATS CARDS (2x2 Grid) -->
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="16" RowSpacing="16">
+                    <Border Grid.Row="0" Grid.Column="0" Padding="16" CornerRadius="8" Background="{StaticResource WhiteColorBrush}">
+                        <StackPanel Spacing="8" HorizontalAlignment="Center">
+                            <TextBlock Text="📚" FontSize="32"/>
+                            <TextBlock Text="1.250+" FontSize="22" FontWeight="SemiBold"/>
+                            <TextBlock Text="Cursos" FontSize="14" Opacity="0.7"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="1" Padding="16" CornerRadius="8" Background="{StaticResource WhiteColorBrush}">
+                        <StackPanel Spacing="8" HorizontalAlignment="Center">
+                            <TextBlock Text="💰" FontSize="32"/>
+                            <TextBlock Text="R$ 758" FontSize="22" FontWeight="SemiBold" Foreground="{StaticResource SecondaryColorBrush}"/>
+                            <TextBlock Text="Bolsa Média" FontSize="14" Opacity="0.7"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="0" Padding="16" CornerRadius="8" Background="{StaticResource WhiteColorBrush}">
+                        <StackPanel Spacing="8" HorizontalAlignment="Center">
+                            <TextBlock Text="✅" FontSize="32"/>
+                            <TextBlock Text="87%" FontSize="22" FontWeight="SemiBold" Foreground="{StaticResource PrimaryColorBrush}"/>
+                            <TextBlock Text="Elegibilidade" FontSize="14" Opacity="0.7"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" Padding="16" CornerRadius="8" Background="{StaticResource WhiteColorBrush}">
+                        <StackPanel Spacing="8" HorizontalAlignment="Center">
+                            <TextBlock Text="⏱️" FontSize="32"/>
+                            <TextBlock Text="6 meses" FontSize="22" FontWeight="SemiBold"/>
+                            <TextBlock Text="Tempo Médio" FontSize="14" Opacity="0.7"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <!-- RECOMENDAÇÕES PARA VOCÊ -->
+                <StackPanel Spacing="16">
+                    <TextBlock Text="⭐ Para Você" FontSize="20" FontWeight="Bold"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <ItemsControl ItemsSource="{Binding RecommendedCourses}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" Spacing="16"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="models:Course">
+                                    <Border Width="280" Padding="16" CornerRadius="12" Background="{StaticResource WhiteColorBrush}" BorderThickness="1" BorderBrush="{StaticResource LightGrayColorBrush}">
+                                        <StackPanel Spacing="12">
+                                            <Border Height="140" CornerRadius="8">
+                                                <Image Source="{Binding ThumbnailUrl}" Stretch="UniformToFill"/>
+                                            </Border>
+                                            <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <TextBlock Text="R$" FontSize="14" Opacity="0.7"/>
+                                                <TextBlock Text="{Binding Stipend}" FontWeight="Bold" Foreground="{StaticResource SecondaryColorBrush}" FontSize="14"/>
+                                                <TextBlock Text="/mês" FontSize="14" Opacity="0.7"/>
+                                            </StackPanel>
+                                            <ProgressBar Value="{Binding MatchScore}" Maximum="100" Foreground="{StaticResource SecondaryColorBrush}" Height="5"/>
+                                            <Button Content="Explorar Oportunidade" Background="{StaticResource PrimaryColorBrush}" Foreground="{StaticResource WhiteColorBrush}" Padding="12,8" CornerRadius="6" HorizontalAlignment="Stretch"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </StackPanel>
+
+                <!-- CURSOS POPULARES -->
+                <StackPanel Spacing="16">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <TextBlock Text="🔥 Cursos Populares" FontSize="20" FontWeight="Bold"/>
+                        <Button Content="Ver Todos →" Style="{ThemeResource TextBlockButtonStyle}" Foreground="{StaticResource PrimaryColorBrush}"/>
+                    </Grid>
+                    <ListView ItemsSource="{Binding AllCourses}" MaxHeight="400" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Course">
+                                <Border Padding="16" Margin="0,4" CornerRadius="8" Background="{StaticResource WhiteColorBrush}">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <StackPanel Spacing="4">
+                                            <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="16"/>
+                                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                                <TextBlock Text="{Binding Provider}" FontSize="14" Opacity="0.7"/>
+                                                <TextBlock Text="•" Opacity="0.7"/>
+                                                <TextBlock Text="{Binding Duration}" FontSize="14" Opacity="0.7"/>
+                                            </StackPanel>
+                                            <TextBlock Text="{Binding AvailableVacancies, ConverterParameter='vagas', Converter={StaticResource StringFormatConverter}}" FontWeight="Bold" Foreground="{StaticResource SecondaryColorBrush}" FontSize="14"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Stipend, ConverterParameter='C2', Converter={StaticResource StringFormatConverter}}" FontWeight="Bold" FontSize="18" Foreground="{StaticResource PrimaryColorBrush}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- BOTTOM NAVIGATION -->
+        <Grid Grid.Row="2" Background="{StaticResource WhiteColorBrush}" BorderThickness="0,1,0,0" BorderBrush="#E0E0E0" Height="80">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{ThemeResource TextBlockButtonStyle}" Foreground="{StaticResource PrimaryColorBrush}"><StackPanel Spacing="4" HorizontalAlignment="Center"><TextBlock Text="🏠" FontSize="20"/><TextBlock Text="Home" FontSize="12"/></StackPanel></Button>
+            <Button Grid.Column="1" Style="{ThemeResource TextBlockButtonStyle}"><StackPanel Spacing="4" HorizontalAlignment="Center"><TextBlock Text="👤" FontSize="20"/><TextBlock Text="Perfil" FontSize="12"/></StackPanel></Button>
+            <Button Grid.Column="2" Style="{ThemeResource TextBlockButtonStyle}"><StackPanel Spacing="4" HorizontalAlignment="Center"><TextBlock Text="📚" FontSize="20"/><TextBlock Text="Cursos" FontSize="12"/></StackPanel></Button>
+            <Button Grid.Column="3" Style="{ThemeResource TextBlockButtonStyle}"><StackPanel Spacing="4" HorizontalAlignment="Center"><TextBlock Text="🏆" FontSize="20"/><TextBlock Text="Badges" FontSize="12"/></StackPanel></Button>
+            <Button Grid.Column="4" Style="{ThemeResource TextBlockButtonStyle}"><StackPanel Spacing="4" HorizontalAlignment="Center"><TextBlock Text="📍" FontSize="20"/><TextBlock Text="Mapa" FontSize="12"/></StackPanel></Button>
+            <Button Grid.Column="5" Style="{ThemeResource TextBlockButtonStyle}"><StackPanel Spacing="4" HorizontalAlignment="Center"><TextBlock Text="📈" FontSize="20"/><TextBlock Text="Progresso" FontSize="12"/></StackPanel></Button>
+            <Button Grid.Column="6" Style="{ThemeResource TextBlockButtonStyle}" Click="NavigateToAlerts"><StackPanel Spacing="4" HorizontalAlignment="Center"><TextBlock Text="🔔" FontSize="20"/><TextBlock Text="Alertas" FontSize="12"/></StackPanel></Button>
+            <Button Grid.Column="7" Style="{ThemeResource TextBlockButtonStyle}" Click="NavigateToAnimations"><StackPanel Spacing="4" HorizontalAlignment="Center"><TextBlock Text="🎨" FontSize="20"/><TextBlock Text="Animações" FontSize="12"/></StackPanel></Button>
+        </Grid>
+    </Grid>
+</Page>

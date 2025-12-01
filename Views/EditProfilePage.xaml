@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="ConectaBairro.Views.EditProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="#F0F4F8">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        
+        <!-- HEADER -->
+        <Border Grid.Row="0" Padding="20,40,20,20" Background="#1E3A5F">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Button Grid.Column="0" Click="GoBack_Click" Background="Transparent" BorderThickness="0">
+                    <TextBlock Text="← Cancel" FontSize="14" Foreground="White"/>
+                </Button>
+                <TextBlock Grid.Column="1" Text="Edit Profile" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button Grid.Column="2" Click="Save_Click" Background="#10B981" CornerRadius="8" Padding="12,6">
+                    <TextBlock Text="Save" FontSize="14" Foreground="White" FontWeight="SemiBold"/>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- FORM -->
+        <ScrollViewer Grid.Row="1" Padding="20">
+            <StackPanel Spacing="16">
+                
+                <!-- Avatar -->
+                <StackPanel HorizontalAlignment="Center" Spacing="12">
+                    <Grid>
+                        <Border Width="100" Height="100" CornerRadius="50" Background="#3B82F6">
+                            <TextBlock x:Name="AvatarInitials" Text="PS" FontSize="36" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border x:Name="AvatarImageBorder" Width="100" Height="100" CornerRadius="50" Visibility="Collapsed">
+                            <Border.Background>
+                                <ImageBrush x:Name="AvatarImageBrush" Stretch="UniformToFill"/>
+                            </Border.Background>
+                        </Border>
+                    </Grid>
+                    <Button Click="ChangePhoto_Click" Background="#DBEAFE" CornerRadius="8" Padding="16,10" BorderThickness="0">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <TextBlock Text="📷" FontSize="16"/>
+                            <TextBlock Text="Change Photo" FontSize="14" Foreground="#1E40AF" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Button>
+                    <TextBlock x:Name="PhotoStatusText" Text="" FontSize="12" Foreground="#10B981" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Full Name -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Full Name" FontSize="14" FontWeight="SemiBold" Foreground="#374151"/>
+                    <TextBox x:Name="NameInput" PlaceholderText="Your full name" Text="Paulo Silva" 
+                             FontSize="16" Padding="14" CornerRadius="12"
+                             Background="White" Foreground="#1F2937" 
+                             BorderBrush="#D1D5DB" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- Email -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Email" FontSize="14" FontWeight="SemiBold" Foreground="#374151"/>
+                    <TextBox x:Name="EmailInput" PlaceholderText="your@email.com" Text="paulo@email.com" 
+                             FontSize="16" Padding="14" CornerRadius="12"
+                             Background="White" Foreground="#1F2937"
+                             BorderBrush="#D1D5DB" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- Phone -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Phone" FontSize="14" FontWeight="SemiBold" Foreground="#374151"/>
+                    <TextBox x:Name="PhoneInput" PlaceholderText="+1 (555) 123-4567" Text="(11) 98765-4321" 
+                             FontSize="16" Padding="14" CornerRadius="12"
+                             Background="White" Foreground="#1F2937"
+                             BorderBrush="#D1D5DB" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- Neighborhood -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Neighborhood" FontSize="14" FontWeight="SemiBold" Foreground="#374151"/>
+                    <TextBox x:Name="NeighborhoodInput" PlaceholderText="Your neighborhood" Text="Vila Mariana" 
+                             FontSize="16" Padding="14" CornerRadius="12"
+                             Background="White" Foreground="#1F2937"
+                             BorderBrush="#D1D5DB" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- City -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="City" FontSize="14" FontWeight="SemiBold" Foreground="#374151"/>
+                    <TextBox x:Name="CityInput" PlaceholderText="Your city" Text="São Paulo" 
+                             FontSize="16" Padding="14" CornerRadius="12"
+                             Background="White" Foreground="#1F2937"
+                             BorderBrush="#D1D5DB" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- Interests -->
+                <Border Background="White" CornerRadius="12" Padding="16" Margin="0,8,0,0">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Areas of Interest" FontSize="14" FontWeight="SemiBold" Foreground="#374151"/>
+                        <CheckBox x:Name="InterestTech" IsChecked="True">
+                            <TextBlock Text="💻 Technology" Foreground="#1F2937"/>
+                        </CheckBox>
+                        <CheckBox x:Name="InterestHealth">
+                            <TextBlock Text="🏥 Healthcare" Foreground="#1F2937"/>
+                        </CheckBox>
+                        <CheckBox x:Name="InterestBusiness" IsChecked="True">
+                            <TextBlock Text="💼 Business" Foreground="#1F2937"/>
+                        </CheckBox>
+                        <CheckBox x:Name="InterestEducation">
+                            <TextBlock Text="🎓 Education" Foreground="#1F2937"/>
+                        </CheckBox>
+                        <CheckBox x:Name="InterestSocial">
+                            <TextBlock Text="🤝 Social Services" Foreground="#1F2937"/>
+                        </CheckBox>
+                    </StackPanel>
+                </Border>
+
+                <!-- Notifications -->
+                <Border Background="White" CornerRadius="12" Padding="16" Margin="0,8,0,0">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Notification Preferences" FontSize="14" FontWeight="SemiBold" Foreground="#374151"/>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Text="Neighborhood alerts" FontSize="14" Foreground="#1F2937" VerticalAlignment="Center"/>
+                            <ToggleSwitch x:Name="AlertsToggle" Grid.Column="1" IsOn="True"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Text="New opportunities" FontSize="14" Foreground="#1F2937" VerticalAlignment="Center"/>
+                            <ToggleSwitch x:Name="OpportunitiesToggle" Grid.Column="1" IsOn="True"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Text="Messages" FontSize="14" Foreground="#1F2937" VerticalAlignment="Center"/>
+                            <ToggleSwitch x:Name="MessagesToggle" Grid.Column="1" IsOn="True"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Height="20"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

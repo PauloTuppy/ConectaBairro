@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="ConectaBairro.Views.MessagesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Background="{StaticResource BackgroundBrush}">
+
+    <Grid RowDefinitions="Auto,*">
+        
+        <!-- HEADER -->
+        <Border Grid.Row="0" Background="{StaticResource SurfaceBrush}" Padding="20,40,20,20">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Button Grid.Column="0" Style="{StaticResource GhostButton}" Click="GoBack">
+                    <TextBlock Text="← Voltar" FontSize="14" Foreground="{StaticResource TextPrimaryBrush}"/>
+                </Button>
+                <TextBlock Grid.Column="1" Text="Mensagens" Style="{StaticResource HeadingMD}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button Grid.Column="2" Style="{StaticResource IconButton}">
+                    <TextBlock Text="✏️" FontSize="20"/>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- CONTEÚDO -->
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Spacing="8" Padding="0">
+
+                <!-- Barra de Busca -->
+                <Border Background="{StaticResource SurfaceBrush}" Padding="16">
+                    <Border Background="{StaticResource BackgroundBrush}" CornerRadius="{StaticResource RadiusMD}" Padding="12">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <TextBlock Text="🔍" FontSize="16" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <TextBox Grid.Column="1" PlaceholderText="Buscar conversas..." Background="Transparent" BorderThickness="0" FontSize="14"/>
+                        </Grid>
+                    </Border>
+                </Border>
+
+                <!-- Contatos Online -->
+                <Border Style="{StaticResource CardStyle}" Margin="16,0">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Online Agora" Style="{StaticResource CaptionBold}"/>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                            <StackPanel Orientation="Horizontal" Spacing="16">
+                                <!-- Maria -->
+                                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                                    <Grid>
+                                        <Border Width="52" Height="52" CornerRadius="26" Background="{StaticResource SecondaryLightBrush}">
+                                            <TextBlock Text="MC" FontSize="16" FontWeight="Bold" Foreground="{StaticResource SecondaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <Ellipse Width="12" Height="12" Fill="{StaticResource SuccessBrush}" Stroke="White" StrokeThickness="2" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                    </Grid>
+                                    <TextBlock Text="Maria" Style="{StaticResource Caption}" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <!-- João -->
+                                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                                    <Grid>
+                                        <Border Width="52" Height="52" CornerRadius="26" Background="{StaticResource PrimaryLightBrush}">
+                                            <TextBlock Text="JL" FontSize="16" FontWeight="Bold" Foreground="{StaticResource PrimaryDarkBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <Ellipse Width="12" Height="12" Fill="{StaticResource SuccessBrush}" Stroke="White" StrokeThickness="2" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                    </Grid>
+                                    <TextBlock Text="João" Style="{StaticResource Caption}" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <!-- Ana -->
+                                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                                    <Grid>
+                                        <Border Width="52" Height="52" CornerRadius="26" Background="{StaticResource AccentLightBrush}">
+                                            <TextBlock Text="AS" FontSize="16" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <Ellipse Width="12" Height="12" Fill="{StaticResource SuccessBrush}" Stroke="White" StrokeThickness="2" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                    </Grid>
+                                    <TextBlock Text="Ana" Style="{StaticResource Caption}" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </StackPanel>
+                </Border>
+
+                <!-- Lista de Conversas -->
+                <Border Background="{StaticResource SurfaceBrush}" Margin="16,0" CornerRadius="{StaticResource RadiusLG}">
+                    <StackPanel>
+                        <TextBlock Text="Conversas" Style="{StaticResource CaptionBold}" Margin="16,16,16,8"/>
+                        
+                        <!-- Conversa 1 - Não lida -->
+                        <Border Padding="16" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                <Border Width="48" Height="48" CornerRadius="24" Background="{StaticResource SecondaryLightBrush}">
+                                    <TextBlock Text="MC" FontSize="16" FontWeight="Bold" Foreground="{StaticResource SecondaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <TextBlock Text="Maria Costa" Style="{StaticResource BodyMD}" FontWeight="Bold"/>
+                                        <TextBlock Grid.Column="1" Text="10:30" FontSize="11" Foreground="{StaticResource SecondaryBrush}" FontWeight="SemiBold"/>
+                                    </Grid>
+                                    <TextBlock Text="Oi! Você viu as novas vagas do PRONATEC?" Style="{StaticResource BodySM}" TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                                <Border Grid.Column="2" Width="22" Height="22" CornerRadius="11" Background="{StaticResource SecondaryBrush}" VerticalAlignment="Center">
+                                    <TextBlock Text="2" FontSize="11" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <!-- Conversa 2 -->
+                        <Border Padding="16" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Border Width="48" Height="48" CornerRadius="24" Background="{StaticResource PrimaryLightBrush}">
+                                    <TextBlock Text="JL" FontSize="16" FontWeight="Bold" Foreground="{StaticResource PrimaryDarkBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <TextBlock Text="João Lima" Style="{StaticResource BodyMD}" FontWeight="SemiBold"/>
+                                        <TextBlock Grid.Column="1" Text="Ontem" Style="{StaticResource Caption}"/>
+                                    </Grid>
+                                    <TextBlock Text="Obrigado pela ajuda com o curso!" Style="{StaticResource BodySM}" TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Conversa 3 -->
+                        <Border Padding="16" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Border Width="48" Height="48" CornerRadius="24" Background="{StaticResource AccentLightBrush}">
+                                    <TextBlock Text="AS" FontSize="16" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <TextBlock Text="Ana Santos" Style="{StaticResource BodyMD}" FontWeight="SemiBold"/>
+                                        <TextBlock Grid.Column="1" Text="Seg" Style="{StaticResource Caption}"/>
+                                    </Grid>
+                                    <TextBlock Text="Vamos juntos no mutirão de sábado?" Style="{StaticResource BodySM}" TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Conversa 4 - Grupo -->
+                        <Border Padding="16">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Border Width="48" Height="48" CornerRadius="24" Background="#E0E7FF">
+                                    <TextBlock Text="👥" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <TextBlock Text="Grupo Vila Mariana" Style="{StaticResource BodyMD}" FontWeight="SemiBold"/>
+                                        <TextBlock Grid.Column="1" Text="Dom" Style="{StaticResource Caption}"/>
+                                    </Grid>
+                                    <TextBlock Text="Carlos: Alguém sabe sobre a feira?" Style="{StaticResource BodySM}" TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Height="20"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
